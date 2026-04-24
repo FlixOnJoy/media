@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Iframe with Dropdown</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #f0f0f0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <select id="urlSelector" onchange="changeIframeUrl()">
+    <option value="https://www.yourupload.com/embed/0W0vGm202t7f">(576p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/W4TcMWFvLLsb">(648p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/1H0v85g28fbu">(480p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/eXAN16AjVdM6">(360p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/R3RmsPBqPX1X">(240p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/aMVo64K8886d">(144p, MP4)</option>
+    <option value="https://www.yourupload.com/embed/l0v052Is5RMm">(720p, MP4)</option>
+    <option value="https://app.box.com/embed/s/6axtc9u34ghq03qyytwekuojv229ant4?sortColumn=date">(720p, AV1)</option>
+    <option value="https://app.box.com/embed/s/7nskr5qjtn8glvwu6ggs18gslotwf1go?sortColumn=date">(648p, AV1)</option>
+    <option value="https://app.box.com/embed/s/xjywp5fq65aqugmy9kkfsu61avavph6g?sortColumn=date">(576p, AV1)</option>
+    <option value="https://app.box.com/embed/s/98a2iz0jrjcmezhzjvcx7fxz928egpk2?sortColumn=date">(480p, AV1)</option>
+    <option value="https://app.box.com/embed/s/uqrz59rt6ayldb3cmjzxzo16mmn8hnns?sortColumn=date">(360p, AV1)</option>
+    <option value="https://app.box.com/embed/s/hug14iw5wdwhqq4fl72o68njek1dosjd?sortColumn=date">(240p, AV1)</option>
+    <option value="https://app.box.com/embed/s/lm6eiraitiz1z0op7q3xhfm90ylctk33?sortColumn=date">(144p, AV1)</option>
+    <option value="https://www.yourupload.com/embed/T2q528UldsKM">(720p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/5815opOFT8oS">(648p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/Q315we8CogAW">(576p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/N13nDQWakyAQ">(480p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/woYbW3rgQP33">(360p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/6FjW7iXIVd5r">(240p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/HV87rNqMv28Q">(144p, MKV)</option>
+    <option value="https://www.yourupload.com/embed/cHyrt5Dob5xe">(720p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/AGGJ34g5Sd1v">(648p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/5k7k63SJeWc4">(576p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/7X0Ums4Qt6lq">(480p, 3GP)</option>
+    <option value="https://streamtape.com/e/6XG0wO8pbgc9zkg/SPECIAL-AGENT-OSO-S01E01.240P.3gp">(240p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/m10CRa3335I0">(360p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/3VO67c3opHoH">(144p, 3GP)</option>
+    <option value="https://www.yourupload.com/embed/FJ1xNDd01PRj">(720p, WebM)</option>
+    <option value="https://www.yourupload.com/embed/6ja4w84A8L2O">(648p, WebM)</option>
+    <option value="https://app.box.com/embed/s/nl7fpttoqdzbdzafze51eqpokayr91wt?sortColumn=date">(576p, WebM)</option>
+    <option value="https://streamtape.com/e/KXwRXM73AkIjDK/SPECIAL-AGENT-OSO-S01E01.480P.webm">(480p, WebM)</option>
+    <option value="https://app.box.com/embed/s/1i9ngxr2br019q8ehl9iyx4qofu16w7m?sortColumn=date">(360p, WebM)</option>
+    <option value="https://www.yourupload.com/embed/we4F4qc0SANF">(240p, WebM)</option>
+    <option value="https://www.yourupload.com/embed/fCcBMER2l4Pe">(144p, WebM)</option>
+    <option value="https://flixonjoy.github.io/media/SPECIAL-AGENT-OSO-S01E01.720P.m3u8">(720p, M3U8)</option>
+    <option value="https://flixonjoy.github.io/media/SPECIAL-AGENT-OSO-S01E01.720P.m3u">(720p, M3U)</option>
+    <option value="https://vidcache.net:8161/static/16d64aa8c72f7d81fc6ad8cde6fbc20d99f60b12/SPECIAL-AGENT-OSO-S01E01.720P.xspf">(720p, XSPF)</option>
+    <option value="https://vidcache.net:8161/static/8a89cfcf712e4a05bc45d39ca213db3bb5155ad5/SPECIAL-AGENT-OSO-S01E01.720P.html">(720p, HTML)</option>
+   </select>
+
+  <!-- Iframe Element -->
+  <iframe id="iframe" src="https://www.yourupload.com/embed/0W0vGm202t7f"></iframe>
+
+  <script>
+    function changeIframeUrl() {
+      var iframe = document.getElementById("iframe");
+      var url = document.getElementById("urlSelector").value;
+      iframe.src = url;
+    }
+  </script>
+</body>
+</html>
