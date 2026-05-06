@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://files.catbox.moe/wzhk1z.xsl"?>
+
+<Module>
+  <ModulePrefs/>
+  
+  <Content type="html"><![CDATA[
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Iframe with Dropdown</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background-color: #f0f0f0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <select id="urlSelector" onchange="changeIframeUrl()">
+    <option value="https://files.catbox.moe/yyqzr8.mp4">Part 1</option>
+    <option value="https://files.catbox.moe/xotvrq.mp4">Part 2</option>
+   </select>
+
+  <!-- Iframe Element -->
+  <iframe id="iframe" src="https://www.yourupload.com/embed/0W0vGm202t7f"></iframe>
+
+  <script>
+    function changeIframeUrl() {
+      var iframe = document.getElementById("iframe");
+      var url = document.getElementById("urlSelector").value;
+      iframe.src = url;
+    }
+  </script>
+</body>
+</html> ]]>
+</Content>
+</Module>
